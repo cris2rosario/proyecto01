@@ -1,0 +1,7 @@
+C:\Users\destok\Desktop\Tarea 1 - prog\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\destok\Desktop\Tarea 1 - prog\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\destok\Desktop\Tarea 1 - prog\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\destok\Desktop\Tarea 1 - prog\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.AssemblyReference.cache
+C:\Users\destok\Desktop\Tarea 1 - prog\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\destok\Desktop\Tarea 1 - prog\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\destok\Desktop\Tarea 1 - prog\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
