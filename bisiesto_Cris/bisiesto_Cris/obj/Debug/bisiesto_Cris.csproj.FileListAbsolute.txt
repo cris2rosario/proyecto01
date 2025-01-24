@@ -1,0 +1,7 @@
+C:\Users\destok\Desktop\bisiesto_Cris\bisiesto_Cris\bin\Debug\bisiesto_Cris.exe.config
+C:\Users\destok\Desktop\bisiesto_Cris\bisiesto_Cris\bin\Debug\bisiesto_Cris.exe
+C:\Users\destok\Desktop\bisiesto_Cris\bisiesto_Cris\bin\Debug\bisiesto_Cris.pdb
+C:\Users\destok\Desktop\bisiesto_Cris\bisiesto_Cris\obj\Debug\bisiesto_Cris.csproj.AssemblyReference.cache
+C:\Users\destok\Desktop\bisiesto_Cris\bisiesto_Cris\obj\Debug\bisiesto_Cris.csproj.CoreCompileInputs.cache
+C:\Users\destok\Desktop\bisiesto_Cris\bisiesto_Cris\obj\Debug\bisiesto_Cris.exe
+C:\Users\destok\Desktop\bisiesto_Cris\bisiesto_Cris\obj\Debug\bisiesto_Cris.pdb
