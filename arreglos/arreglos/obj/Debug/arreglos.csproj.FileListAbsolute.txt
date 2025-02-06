@@ -1,0 +1,7 @@
+C:\Users\destok\Desktop\arreglos\arreglos\obj\Debug\arreglos.csproj.AssemblyReference.cache
+C:\Users\destok\Desktop\arreglos\arreglos\obj\Debug\arreglos.csproj.CoreCompileInputs.cache
+C:\Users\destok\Desktop\arreglos\arreglos\bin\Debug\arreglos.exe.config
+C:\Users\destok\Desktop\arreglos\arreglos\bin\Debug\arreglos.exe
+C:\Users\destok\Desktop\arreglos\arreglos\bin\Debug\arreglos.pdb
+C:\Users\destok\Desktop\arreglos\arreglos\obj\Debug\arreglos.exe
+C:\Users\destok\Desktop\arreglos\arreglos\obj\Debug\arreglos.pdb
