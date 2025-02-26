@@ -1,0 +1,7 @@
+C:\Users\destok\Desktop\tarea_POO\tarea_POO\bin\Debug\tarea_POO.exe.config
+C:\Users\destok\Desktop\tarea_POO\tarea_POO\bin\Debug\tarea_POO.exe
+C:\Users\destok\Desktop\tarea_POO\tarea_POO\bin\Debug\tarea_POO.pdb
+C:\Users\destok\Desktop\tarea_POO\tarea_POO\obj\Debug\tarea_POO.csproj.AssemblyReference.cache
+C:\Users\destok\Desktop\tarea_POO\tarea_POO\obj\Debug\tarea_POO.csproj.CoreCompileInputs.cache
+C:\Users\destok\Desktop\tarea_POO\tarea_POO\obj\Debug\tarea_POO.exe
+C:\Users\destok\Desktop\tarea_POO\tarea_POO\obj\Debug\tarea_POO.pdb
