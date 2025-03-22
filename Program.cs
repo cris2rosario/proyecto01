@@ -4,73 +4,97 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Actividad_Repaso
+namespace Herencia_2
 {
     internal class Program
     {
-            class Autobus
-            {
-            public string Nombre { get; set; }
-            public int CapacidadTotal { get; set; }
-            public int PasajerosActuales { get; set; }
-            public int PrecioPasaje { get; set; }
+        class Hamburguesa
+        {
+            public string TipoPan { get; set; }
+            public string TipoCarne { get; set; }
+            public double PrecioBase { get; set; }
+            public List<(string, double)> IngredientesAdicionales { get; set; } = new List<(string, double)>();
+            public int MaxIngredientes { get; set; } = 4;
 
-            public Autobus(string nombre, int capacidadTotal, int precioPasaje)
+            public Hamburguesa(string tipoPan, string tipoCarne, double precioBase)
             {
-                Nombre = nombre;
-                CapacidadTotal = capacidadTotal;
-                PrecioPasaje = precioPasaje;
-                PasajerosActuales = 0;
+                TipoPan = tipoPan;
+                TipoCarne = tipoCarne;
+                PrecioBase = precioBase;
             }
 
-            public void VenderPasaje(int cantidad)
+            public void AgregarIngrediente(string ingrediente, double precio)
             {
-                if (PasajerosActuales + cantidad <= CapacidadTotal)
+                if (IngredientesAdicionales.Count < MaxIngredientes)
                 {
-                    PasajerosActuales += cantidad;
+                    IngredientesAdicionales.Add((ingrediente, precio));
                 }
                 else
                 {
-                    Console.WriteLine("No hay suficientes asientos disponibles.");
+                    Console.WriteLine("No se pueden agregar más ingredientes adicionales.");
                 }
             }
 
-            public int CalcularVentas()
+            public double CalcularPrecioTotal()
             {
-                return PasajerosActuales * PrecioPasaje;
-            }
-
-            public int AsientosDisponibles()
-            {
-                return CapacidadTotal - PasajerosActuales;
-            }
-
-            public void MostrarEstado()
-            {
-                Console.WriteLine($"{Nombre} {PasajerosActuales} Pasajeros Ventas {CalcularVentas()}, quedan {AsientosDisponibles()} asientos disponibles");
-            }
-        
-        class Program
-        {
-            static void Main()
-            {
-                List<Autobus> autobuses = new List<Autobus>
-        {
-            new Autobus("Auto Bus Platinum", 22, 1000),
-            new Autobus("Auto Bus Gold", 15, 1500)
-        };
-
-                autobuses[0].VenderPasaje(5);
-                autobuses[1].VenderPasaje(3);
-
-                foreach (var bus in autobuses)
+                double total = PrecioBase;
+                foreach (var ingrediente in IngredientesAdicionales)
                 {
-                    bus.MostrarEstado();
+                    total += ingrediente.Item2;
                 }
+                return total;
+            }
+
+            public void MostrarDetalle()
+            {
+                Console.WriteLine($"Hamburguesa con pan {TipoPan} y carne {TipoCarne}");
+                Console.WriteLine($"Precio base: {PrecioBase:C}");
+                foreach (var ingrediente in IngredientesAdicionales)
+                {
+                    Console.WriteLine($"+ {ingrediente.Item1}: {ingrediente.Item2:C}");
+                }
+                Console.WriteLine($"Total: {CalcularPrecioTotal():C}\n");
             }
         }
 
+        class HamburguesaSaludable : Hamburguesa
+        {
+            public HamburguesaSaludable(string tipoCarne, double precioBase)
+                : base("Pan Integral", tipoCarne, precioBase)
+            {
+                MaxIngredientes = 6;
+            }
+        }
+
+        class HamburguesaPremium : Hamburguesa
+        {
+            public HamburguesaPremium(string tipoCarne, double precioBase)
+                : base("Pan Brioche", tipoCarne, precioBase)
+            {
+                IngredientesAdicionales.Add(("Papas", 3.00));
+                IngredientesAdicionales.Add(("Bebida", 2.50));
+                MaxIngredientes = 0; // No se permiten más adicionales
+            }
+        }
+
+        class MainProgram
+        {
+            static void Main()
+            {
+                Hamburguesa clasica = new Hamburguesa("Pan Blanco", "Res", 5.00);
+                clasica.AgregarIngrediente("Lechuga", 0.50);
+                clasica.AgregarIngrediente("Tomate", 0.75);
+                clasica.MostrarDetalle();
+
+                HamburguesaSaludable saludable = new HamburguesaSaludable("Pollo", 6.50);
+                saludable.AgregarIngrediente("Aguacate", 1.00);
+                saludable.AgregarIngrediente("Pepino", 0.75);
+                saludable.MostrarDetalle();
+
+                HamburguesaPremium premium = new HamburguesaPremium("Angus", 8.00);
+                premium.MostrarDetalle();
+            }
+        }
 
     }
-}
 }
