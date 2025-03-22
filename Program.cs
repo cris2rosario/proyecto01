@@ -4,103 +4,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace centralita
+namespace Actividad_Repaso
 {
-    public class Llamada
+    internal class Program
     {
-        protected string numOrigen;
-        protected string numDestino;
-        protected double duracion;
-
-        public Llamada(string origen, string destino, double duracion)
-        {
-            this.numOrigen = origen;
-            this.numDestino = destino;
-            this.duracion = duracion;
-        }
-
-        public string GetNumOrigen() => numOrigen;
-        public string GetNumDestino() => numDestino;
-        public double GetDuracion() => duracion;
-
-        public virtual double CalcularPrecio() => 0.0;
-    }
-
-    public class LlamadaLocal : Llamada
-    {
-        private const double PRECIO_POR_SEGUNDO = 0.15;
-
-        public LlamadaLocal(string origen, string destino, double duracion)
-        : base(origen, destino, duracion) { }
-
-        public override double CalcularPrecio() => duracion * PRECIO_POR_SEGUNDO;
-    }
-
-    public class LlamadaProvincial : Llamada
-    {
-        private int franja;
-
-        public LlamadaProvincial(string origen, string destino, double duracion, int franja)
-        : base(origen, destino, duracion)
-        {
-            this.franja = franja;
-        }
-
-        public override double CalcularPrecio()
-        {
-            double precioPorSegundo = 0.0;
-
-            switch (franja)
+            class Autobus
             {
-                case 1:
-                    precioPorSegundo = 0.20;
-                    break;
-                case 2:
-                    precioPorSegundo = 0.25;
-                    break;
-                case 3:
-                    precioPorSegundo = 0.30;
-                    break;
-                default:
-                    throw new ArgumentException("Franja horaria inválida");
+            public string Nombre { get; set; }
+            public int CapacidadTotal { get; set; }
+            public int PasajerosActuales { get; set; }
+            public int PrecioPasaje { get; set; }
+
+            public Autobus(string nombre, int capacidadTotal, int precioPasaje)
+            {
+                Nombre = nombre;
+                CapacidadTotal = capacidadTotal;
+                PrecioPasaje = precioPasaje;
+                PasajerosActuales = 0;
             }
 
-            return duracion * precioPorSegundo;
-        }
-    }
+            public void VenderPasaje(int cantidad)
+            {
+                if (PasajerosActuales + cantidad <= CapacidadTotal)
+                {
+                    PasajerosActuales += cantidad;
+                }
+                else
+                {
+                    Console.WriteLine("No hay suficientes asientos disponibles.");
+                }
+            }
 
-    public class Centralita
-    {
-        private List<Llamada> llamadas = new List<Llamada>();
-        private int contadorLlamadas = 0;
-        private double totalFacturado = 0.0;
+            public int CalcularVentas()
+            {
+                return PasajerosActuales * PrecioPasaje;
+            }
 
-        public void RegistrarLlamada(Llamada llamada)
+            public int AsientosDisponibles()
+            {
+                return CapacidadTotal - PasajerosActuales;
+            }
+
+            public void MostrarEstado()
+            {
+                Console.WriteLine($"{Nombre} {PasajerosActuales} Pasajeros Ventas {CalcularVentas()}, quedan {AsientosDisponibles()} asientos disponibles");
+            }
+        
+        class Program
         {
-            llamadas.Add(llamada);
-            contadorLlamadas++;
-            totalFacturado += llamada.CalcularPrecio();
-            Console.WriteLine($"Llamada registrada: {llamada.GetNumOrigen()} a {llamada.GetNumDestino()} - Duración: {llamada.GetDuracion()}s - Precio: {llamada.CalcularPrecio()}€");
-        }
-
-        public int GetTotalLlamadas() => contadorLlamadas;
-        public double GetTotalFacturado() => totalFacturado;
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
+            static void Main()
+            {
+                List<Autobus> autobuses = new List<Autobus>
         {
-            Centralita centralita = new Centralita();
+            new Autobus("Auto Bus Platinum", 22, 1000),
+            new Autobus("Auto Bus Gold", 15, 1500)
+        };
 
-            // Registrar llamadas
-            centralita.RegistrarLlamada(new LlamadaLocal("123456789", "987654321", 60));
-            centralita.RegistrarLlamada(new LlamadaProvincial("123456789", "987654321", 80, 2));
-            centralita.RegistrarLlamada(new LlamadaProvincial("123456789", "987654321", 120, 1));
+                autobuses[0].VenderPasaje(5);
+                autobuses[1].VenderPasaje(3);
 
-            // Informe de total de llamadas y facturación
-            Console.WriteLine($"Total de llamadas: {centralita.GetTotalLlamadas()}");
-            Console.WriteLine($"Total facturado: {centralita.GetTotalFacturado()}€");
+                foreach (var bus in autobuses)
+                {
+                    bus.MostrarEstado();
+                }
+            }
         }
+
+
     }
+}
 }
