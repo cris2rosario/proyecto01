@@ -1,7 +1,1 @@
-cd "C:\Users\destok\Desktop\SOL_GestionEmpleados"
-git init
-git add .
-git commit -m "Subiendo SOL_GestionEmpleados"
-git remote add origin https://github.com/cris2rosario/proyecto01.git
-git branch -M main
-git push -u origin main
+1
